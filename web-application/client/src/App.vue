@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a href="#" class="navbar-brand">Therapy bot</a>
+      <a href="#" class="navbar-brand">DT2112 project</a>
       <button
         type="button"
         class="navbar-toggler"
@@ -73,6 +73,9 @@
               class="nav-item nav-link active"
               >Survey form <i class="bi bi-box-arrow-up-right"></i
             ></a>
+          </template>
+          <template>
+            <!-- Another link to a study -->
           </template>
           <template v-if="$store.state.authenticatedPsychologist">
             <a

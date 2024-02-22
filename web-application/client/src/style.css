@@ -321,3 +321,11 @@ body {
     font-size: 12px;
   }
 }
+
+#clickInfo {
+  height: 90%; 
+  width:80%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
