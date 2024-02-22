@@ -1,0 +1,12 @@
+CREATE TABLE users (userId text primary key, username text unique, password text, botOrder varchar);
+CREATE TABLE activeSessions (sessionUUID text primary key, userId text);
+CREATE TABLE messages (messageId text primary key, sender text, message text, videoId text, timestamp text, conversationUUID text);
+CREATE TABLE psychologists (userId text primary key, username text unique, password text);
+CREATE TABLE psychologistSessions (sessionUUID text primary key, userId text);
+CREATE TABLE IF NOT EXISTS "userConversations" (
+  conversationUUID TEXT PRIMARY KEY,
+  userId TEXT,
+  botVersion TEXT,
+  messageTitle TEXT,
+  unansweredMessage BOOLEAN
+);
