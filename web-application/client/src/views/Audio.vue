@@ -14,14 +14,18 @@
               Can't connect to the server. Please wait a few minutes and try
               again.
             </div>
-            <div>
-              <button
-                  type="button"
-                  class="click-btn"
-                  @click="buttonClick()"
-                >
-                  PRESS ME
-                </button>
+            <div v-show = false>
+              <!-- audio clip -->
+              <audio autoplay class="soundClip">
+                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\bttb.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+            <div class="clickInfo">
+              <h1 style="text-align:center;"> 
+                Press the space bar when you think the person talking is fearmongering, 
+                i.e. taking advantage of the users feelings of fear for rethorical benefit.
+              </h1>
             </div>
           </div>
         </div>
@@ -88,30 +92,39 @@ export default {
     };
   },
   methods: {
-    
+    redirect(target, version) {
+      if (version === "Mike") {
+        this.$store.state.version = "gpt_default";
+      } else if (version === "Laura") {
+        this.$store.state.version = "gpt_extended";
+      } else if (version === "Liza") {
+        this.$store.state.version = "psychologist";
+      }
+
+      this.$router.push(target);
+    },
+
+    formatedIndex(index) {
+      const botIndex = index + 1;
+
+      let formatedIndex = "";
+
+      if (botIndex === 1) {
+        formatedIndex = "first";
+      } else if (botIndex === 2) {
+        formatedIndex = "second";
+      } else if (botIndex === 3) {
+        formatedIndex = "third";
+      }
+
+      return formatedIndex;
+    },
+
     signOutUser() {
       fetch("/api/signout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
-    },
-
-    buttonClick(){
-      const today = new Date();
-        const now = new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000);
-
-      fetch("/api/button-click", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          time: now,
-        }),
-      })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
     },
   },
 };

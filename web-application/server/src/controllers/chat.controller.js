@@ -501,4 +501,30 @@ router.post("/reload-conversation", requireAuth, async (req, res) => {
   res.status(200).end();
 });
 
+
+router.post("/button-click", requireAuth, async (req, res) => {
+  const { sessionId } = req.cookies;
+  const { conversationId } = req.cookies;
+  const { time } = req.body;
+  
+  console.log(sessionId);
+  console.log(conversationId);
+  console.log(time);
+
+  let dbQuery = `
+                INSERT INTO clicks (userId, time)
+                VALUES (?, ?)
+            `;
+
+      let params = [sessionId, time];
+
+      await db.run(dbQuery, params);
+
+  res.status(200).end();
+  
+});
+
+
+
+
 export default { router };

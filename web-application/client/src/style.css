@@ -322,10 +322,30 @@ body {
   }
 }
 
-#clickInfo {
-  height: 90%; 
-  width:80%;
+
+.click-btn {
+  height: 90%;
+  width: 90%;
   display:flex;
   align-items: center;
   justify-content: center;
+  background-color: #1d8ecd;
+  border: 3px solid #000;
+  border-radius: 6px;
+  font-size: 36px;
+
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  padding: 5%;
+  padding-top: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
 }
+
+
+.click-btn:active {
+  background-color: #ff0000;
+}
+

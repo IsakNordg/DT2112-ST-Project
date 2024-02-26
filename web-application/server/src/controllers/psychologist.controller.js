@@ -183,4 +183,27 @@ router.post(
   }
 );
 
+
+router.post("/sound-played", requirePsychologistAuth, async (req, res) => {
+  const { sessionId } = req.cookies;
+  const { time } = req.body;
+  const { clipId } = req.body;
+  
+  console.log(sessionId);
+  console.log(time);
+  console.log(clipId);
+
+  let dbQuery = `
+                INSERT INTO playbacks (clipId, time)
+                VALUES (?, ?)
+            `;
+
+      let params = [clipId, time];
+
+      await db.run(dbQuery, params);
+
+  res.status(200).end();
+  
+});
+
 export default { router };

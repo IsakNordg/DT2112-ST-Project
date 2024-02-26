@@ -14,23 +14,27 @@
               Can't connect to the server. Please wait a few minutes and try
               again.
             </div>
-            <h1 class="page-title">Clip playback</h1>
-            <div v-show = false>
-              <!-- audio clip -->
-              <audio disabled class="soundClip" id="clipPlayer">
-                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\bttb.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-              </audio>
-            </div>
-            <div>
+            <h1 class="page-title">Psychologist chats</h1>
+            <div
+              v-for="user in Object.keys(conversations)"
+              :key="user"
+              class="row page-content"
+            >
+              <h3>{{ user }}</h3>
               <button
+                v-for="conversation in conversations[user]"
+                :key="conversation.conversationId"
                 type="button"
-                class="audio-button"
+                :class="
+                  conversation.unanswered === false
+                    ? 'btn btn-success chat-overview-btn'
+                    : 'btn btn-warning chat-overview-btn'
+                "
                 @click="
-                  play()
+                  redirect(conversation.conversationId, conversation.userName)
                 "
               >
-                Bad to the Bone
+                {{ conversation.messageTitle }}
               </button>
             </div>
           </div>
@@ -162,28 +166,6 @@ export default {
         headers: { "Content-Type": "application/json" },
       });
     },
-
-    play(){
-
-      const today = new Date();
-        const now = new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000);
-
-      fetch("/api/sound-played", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          clipId: "1",
-          time: now,
-        }),
-      })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-
-      document.getElementById("clipPlayer").play();
-    }
   },
 };
 </script>

@@ -44,35 +44,7 @@
                 </a>
               </template>
             </template>
-            <template v-else>
-              <a
-                v-for="bot in $store.state.botOrder.filter(
-                  (bot) => bot !== 'Liza'
-                )"
-                :key="bot"
-                href="#"
-                class="nav-item nav-link active"
-                @click="redirect('/chat', bot)"
-              >
-                Chatbot: {{ bot }}
-              </a>
-            </template>
-            <a
-              v-if="$store.state.psychologistOnline"
-              href="https://forms.gle/xSWXBGP6L3owM7Am6"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="nav-item nav-link active"
-              >Survey form <i class="bi bi-box-arrow-up-right"></i
-            ></a>
-            <a
-              v-else
-              href="https://forms.gle/Uf45xPHNx74qx25X8"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="nav-item nav-link active"
-              >Survey form <i class="bi bi-box-arrow-up-right"></i
-            ></a>
+            
           </template>
           <template>
             <!-- Another link to a study -->
