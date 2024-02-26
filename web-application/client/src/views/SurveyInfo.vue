@@ -97,6 +97,7 @@ export default {
     },
 
     buttonClick(){
+      navigator.vibrate(500); //OBS! funkar bara för android
       const today = new Date();
         const now = new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000);
 

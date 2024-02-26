@@ -324,8 +324,8 @@ body {
 
 
 .click-btn {
-  height: 90%;
-  width: 90%;
+  height: 500px;
+  width: 1000%;
   display:flex;
   align-items: center;
   justify-content: center;
@@ -333,6 +333,13 @@ body {
   border: 3px solid #000;
   border-radius: 6px;
   font-size: 36px;
+  text-align: center;
+  line-height: 200px;
+  user-select: none;
+  -webkit-user-select: none; /* Safari on iOS */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   margin: 0 auto;
   margin-top: 1%;
