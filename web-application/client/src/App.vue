@@ -24,26 +24,7 @@
               @click="redirect('/survey-info')"
               >Survey Info</a
             >
-            <template v-if="$store.state.psychologistOnline">
-              <template
-                v-if="
-                  $store.state.authenticated &&
-                  !$store.state.authenticatedPsychologist
-                "
-              >
-                <a
-                  v-for="bot in $store.state.botOrder.filter(
-                    (bot) => bot !== 'Laura'
-                  )"
-                  :key="bot"
-                  href="#"
-                  class="nav-item nav-link active"
-                  @click="redirect('/chat', bot)"
-                >
-                  Chatbot: {{ bot }}
-                </a>
-              </template>
-            </template>
+            
             
           </template>
           <template>

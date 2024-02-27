@@ -10,6 +10,9 @@ CREATE TABLE IF NOT EXISTS "userConversations" (
   messageTitle TEXT,
   unansweredMessage BOOLEAN
 );
+
+DROP TABLE clicks;
+DROP TABLE playbacks;
 CREATE TABLE clicks (userId text, time text);
 CREATE TABLE playbacks (clipId text, time text);
 INSERT INTO psychologists VALUES ("c64545c3-cc21-433e-999a-3a5628f6cd38", "birger", "$2b$10$gKgmFnWD0Vyq1WXjAwPPU.mBsGChGn.KAa/OvS8fGwfCaHigzXv42");
