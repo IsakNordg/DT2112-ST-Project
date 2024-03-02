@@ -21,18 +21,215 @@
                 <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\bttb.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
               </audio>
+              <audio disabled class="soundClip" id="player2">
+                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\2.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+              <audio disabled class="soundClip" id="player5">
+                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\5.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              <audio disabled class="soundClip" id="player6">
+                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\6.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+              <audio disabled class="soundClip" id="player7">
+                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\7.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              <audio disabled class="soundClip" id="player11">
+                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\11.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+              <audio disabled class="soundClip" id="player13">
+                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\13.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+              <audio disabled class="soundClip" id="player18">
+                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\18.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+              <audio disabled class="soundClip" id="player19">
+                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\19.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              <audio disabled class="soundClip" id="test-player">
+                <source src="C:\Users\Joel\Documents\VSCode\DT2112\DT2112-ST-Project\web-application\client\public\test.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              
             </div>
             <div>
               <button
                 type="button"
                 class="audio-button"
                 @click="
-                  play()
+                  stopAll()
+                "
+              >
+                Stop
+              </button>
+              
+            </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  play('test-player')
+                "
+              >
+                Test
+              </button>
+              
+            </div>
+            <div>
+              <button
+                v-if = "false"
+                type="button"
+                class="audio-button"
+                @click="
+                  play('clipPlayer')
                 "
               >
                 Bad to the Bone
               </button>
+              
             </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  play('player2')
+                "
+              >
+                Clip 2
+              </button>
+              
+            </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  play('player5')
+                "
+              >
+                Clip 5
+              </button>
+              
+            </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  play('player6')
+                "
+              >
+                Clip 6
+              </button>
+              
+            </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  play('player7')
+                "
+              >
+                Clip 7
+              </button>
+              
+            </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  play('player11')
+                "
+              >
+                Clip 11
+              </button>
+              
+            </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  play('player13')
+                "
+              >
+                Clip 13
+              </button>
+              
+            </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  play('player18')
+                "
+              >
+                Clip 18
+              </button>
+              
+            </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  play('player19')
+                "
+              >
+                Clip 19
+              </button>
+              
+            </div>
+
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  report('group1')
+                "
+              >
+                Group 1
+              </button>
+              
+            </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  report('group2')
+                "
+              >
+                Group 2
+              </button>
+              
+            </div>
+            <div>
+              <button
+                type="button"
+                class="audio-button"
+                @click="
+                  report('group3')
+                "
+              >
+                Group 3
+              </button>
+              
+            </div>
+            
           </div>
         </div>
       </div>
@@ -163,10 +360,9 @@ export default {
       });
     },
 
-    play(){
+    play(player){
 
-      const today = new Date();
-        const now = new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000);
+      const now = new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000);
 
       fetch("/api/sound-played", {
         method: "POST",
@@ -174,15 +370,48 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          clipId: "1",
+          clipId: player,
           time: now,
         }),
       })
         .catch((error) => {
           console.error("Error:", error);
         });
+      
+      let players = document.getElementsByClassName("soundClip");
+      for (let i = 0; i<players.length; i++){
+        players[i].pause();
+        players[i].currentTime = 0;
+      }
+      document.getElementById(player).play();
+    },
 
-      document.getElementById("clipPlayer").play();
+    report(group){
+
+      const now = new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000);
+
+      fetch("/api/sound-played", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          clipId: group,
+          time: now,
+        }),
+      })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    },
+
+    stopAll(){
+      let players = document.getElementsByClassName("soundClip");
+      console.log(players);
+      for (let i = 0; i<players.length; i++){
+        players[i].pause();
+        players[i].currentTime = 0;
+      }
     }
   },
 };
